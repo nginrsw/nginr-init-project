@@ -1,6 +1,6 @@
 # Basic Project Creation Guide
 
-This guide explains the steps to create a basic project structure similar to `project`.
+This guide explains the steps to create a basic `project` structure.
 
 ## 1. Directory Structure
 ```
