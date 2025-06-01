@@ -1,6 +1,6 @@
 # Panduan Pembuatan Project Dasar
 
-Panduan ini menjelaskan langkah-langkah membuat project dasar seperti struktur `project`.
+Panduan ini menjelaskan langkah-langkah membuat struktur `project` dasar.
 
 ## 1. Struktur Direktori
 ```
