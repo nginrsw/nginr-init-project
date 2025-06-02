@@ -64,4 +64,4 @@ Untuk menjalankan file `.xr` dengan task di VS Code, buat file `tasks.json` di f
 
 - Pastikan path pada bagian `command` sudah sesuai dengan lokasi `nginr` di sistem Anda. Gunakan `${HOME}` untuk path home agar lebih portabel.
 - Simpan file ini sebagai `.vscode/tasks.json` di root project.
-- jika menggunakan `errorlens` extension, pastikan python interpreter `tidak di-set ke versi apapun` agar `errorlens` tidak memberikan warning terus menerus ke line yg memiliki deklarasi `fn`, kenapa? karna kita tidak langsung menggunakan `interpreter python` langsung, melainkan menggunakan `preprocessor nginr`.
+- jika menggunakan `errorlens` extension, pastikan python interpreter `tidak di-set ke versi apapun` agar `errorlens` tidak memberikan warning terus menerus ke line yg memiliki deklarasi `fn`, kenapa? karna kita tidak langsung menggunakan `interpreter python`, melainkan menggunakan `preprocessor nginr`.
