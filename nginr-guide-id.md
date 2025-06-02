@@ -49,12 +49,12 @@ myproject/
 
 Agar file `.xr` dikenali sebagai Python (untuk highlight sintaks dan integrasi alat bantu lain), tambahkan konfigurasi berikut ke `settings.json`.
 
-Cara Membuka `settings.json` (User Settings):
+**Cara membuka `settings.json` (User Settings):**
 
-* Buka VS Code.
-* Klik menu **File → Preferences → Settings** (atau tekan `Ctrl + ,`).
-* Di pojok kanan atas panel Settings, klik ikon `{}` (Open Settings (JSON)).
-* Tambahkan kode berikut ke dalam JSON:
+1. Buka VS Code.
+2. Klik menu **File → Preferences → Settings** (atau tekan `Ctrl + ,`).
+3. Di pojok kanan atas panel Settings, klik ikon `{}` (Open Settings (JSON)).
+4. Tambahkan kode berikut ke dalam JSON:
 
 ```json
 "files.associations": {
@@ -64,18 +64,39 @@ Cara Membuka `settings.json` (User Settings):
 
 > Jika sudah ada bagian `files.associations`, kamu cukup menambahkan baris `"*.xr": "python"` di dalamnya.
 
+---
+
 ### b. Menonaktifkan Ekstensi Python (Direkomendasikan)
 
-Untuk menghindari peringatan error dari linter Python (seperti `fn` yang bukan keyword Python), **disarankan untuk menonaktifkan ekstensi Python** sepenuhnya pada proyek `.xr`.
+Untuk menghindari peringatan atau error sintaks dari linter Python (misalnya `fn` dianggap salah karena bukan keyword Python standar), **disarankan untuk menonaktifkan ekstensi Python khusus untuk proyek ini**.
 
-#### Langkah-langkah:
+#### Cara menonaktifkan ekstensi Python hanya untuk satu proyek (workspace):
 
-1. Buka **Command Palette** (`Ctrl+Shift+P`).
-2. Ketik dan pilih: `Extensions: Disable (Workspace)`
-3. Cari **Python** lalu pilih untuk menonaktifkan.
-4. VS Code akan menawarkan untuk **menonaktifkan ekstensi lain yang terhubung dengan Python** (seperti Jupyter, Pylance, dll) — **pilih "Yes" atau "Disable All"** agar tidak ada linter aktif yang mengganggu.
+1. Buka **sidebar Extensions** (klik ikon kotak atau tekan `Ctrl+Shift+X`).
 
-> Jangan khawatir, ini hanya berlaku untuk proyek ini saja (workspace). Ekstensi Python tetap aktif untuk proyek lain.
+2. Ketik **Python** di kotak pencarian.
+
+3. Temukan ekstensi **Python** (biasanya oleh Microsoft).
+
+4. Klik ikon roda gigi **⚙️** di sebelah ekstensi, lalu pilih:
+
+   > **"Disable (Workspace)"**
+
+5. Jika muncul pertanyaan seperti:
+
+   > *"This extension depends on other extensions. Do you want to disable them too?"*
+
+   Pilih **"Yes" atau "Disable All"**.
+
+Ini akan otomatis menonaktifkan ekstensi tambahan seperti:
+
+* **Pylance**
+* **Jupyter**
+* **Python Debugger**, dll.
+
+> Ini hanya berlaku untuk folder proyek ini saja. Di proyek lain, ekstensi Python tetap aktif seperti biasa.
+
+---
 
 ### c. Task untuk Menjalankan File
 
@@ -106,9 +127,11 @@ Buat file `tasks.json` di dalam folder `.vscode/` dengan isi seperti berikut:
 * Gunakan `${HOME}` agar lebih portabel.
 * Simpan file ini sebagai `.vscode/tasks.json` di root proyek.
 
+---
+
 ### d. Catatan untuk Pengguna Ekstensi ErrorLens
 
-Jika Anda menggunakan ekstensi **ErrorLens**, perhatikan bahwa **ErrorLens akan tetap memunculkan peringatan jika ada linter aktif** seperti Python/Pylance. Maka dari itu:
+Jika Anda menggunakan ekstensi **ErrorLens**, perlu diketahui bahwa ErrorLens hanya menampilkan pesan dari ekstensi lain (seperti Python atau Pylance). Oleh karena itu:
 
-* **Matikan ekstensi Python seperti dijelaskan di atas**.
-* Alternatif lain: **nonaktifkan ErrorLens sementara** jika masih mengganggu.
+* **Disarankan untuk menonaktifkan ekstensi Python**, agar pesan error tidak muncul terus.
+* Jika ErrorLens masih terlalu mengganggu, kamu bisa **menonaktifkannya sementara** lewat ikon roda gigi di sidebar Extensions.
