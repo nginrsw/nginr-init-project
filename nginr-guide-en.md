@@ -45,16 +45,17 @@ myproject/
 
 ## 5. VS Code Configuration: Settings and Tasks
 
-### a. Syntax Highlighting Setup
+### a. Syntax Highlighting
 
-To make `.xr` files recognized as Python (for syntax highlighting and better tool integration), add the following configuration to your `settings.json`.
+To make `.xr` files recognized as Python (for syntax highlighting and integration with other tools), add the following configuration to your `settings.json`.
 
-#### How to Open `settings.json` (User Settings):
+**How to Open `settings.json` (User Settings):**
 
-1. Open VS Code.
-2. Go to **File → Preferences → Settings** (or press `Ctrl + ,`).
-3. Click the **{} icon** (Open Settings (JSON)) in the top right corner of the settings panel.
-4. Add the following code:
+* Open VS Code.
+* Go to **File → Preferences → Settings** (or press `Ctrl + ,`).
+* Click the `{}` icon at the top right corner to open the JSON view.
+
+Then add this to your JSON:
 
 ```json
 "files.associations": {
@@ -62,9 +63,23 @@ To make `.xr` files recognized as Python (for syntax highlighting and better too
 }
 ```
 
-> If a `files.associations` section already exists, just add `"*.xr": "python"` inside it.
+> If you already have a `files.associations` section, simply add `"*.xr": "python"` inside it.
 
-### b. Task to Run the File
+### b. Disabling the Python Extension (Recommended)
+
+To avoid constant linting errors from the Python extension (e.g., marking `fn` as an invalid function declaration), it’s **recommended to disable the Python extension** for this workspace.
+
+#### Steps:
+
+1. Open the **Command Palette** (`Ctrl+Shift+P`).
+2. Search for and select: `Extensions: Disable (Workspace)`
+3. Find **Python**, then choose to disable it.
+4. VS Code may prompt you to **also disable related extensions** (like Jupyter, Pylance, etc.).
+   → **Choose "Yes" or "Disable All"** to avoid interference.
+
+> This only disables Python extensions for the current project. They remain active for other workspaces.
+
+### c. Running Files with a Task
 
 Create a `tasks.json` file inside the `.vscode/` folder with the following content:
 
@@ -75,7 +90,7 @@ Create a `tasks.json` file inside the `.vscode/` folder with the following conte
     {
       "label": "nginr",
       "type": "shell",
-      "command": "${HOME}/PATH/TO/nginr", // Replace PATH/TO with the actual location of nginr
+      "command": "${HOME}/PATH/TO/nginr", // Replace PATH/TO with your actual nginr path
       "args": [
         "${file}"
       ],
@@ -89,9 +104,13 @@ Create a `tasks.json` file inside the `.vscode/` folder with the following conte
 }
 ```
 
-* Make sure the path in `command` points to where `nginr` is installed on your system. Use `${HOME}` to make it more portable.
-* Save this file as `.vscode/tasks.json` in your project root.
+* Make sure the path in `command` matches your system's location for `nginr`.
+* Use `${HOME}` for portability.
+* Save this as `.vscode/tasks.json` in the project root.
 
-### c. Note for ErrorLens Users
+### d. Note for ErrorLens Users
 
-If you're using the `ErrorLens` extension, make sure the Python interpreter is **not set to any specific version**. This avoids persistent warnings on lines that use `fn` or other custom syntax, because the project doesn't use the Python interpreter directly—instead, it uses the `nginr` preprocessor.
+If you use the **ErrorLens** extension, be aware that it will still highlight errors reported by linters such as Python or Pylance. Therefore:
+
+* **Disable the Python extension as shown above** to prevent false errors.
+* Alternatively, you can **temporarily disable ErrorLens** if it becomes too noisy.
