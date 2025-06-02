@@ -49,14 +49,12 @@ myproject/
 
 Agar file `.xr` dikenali sebagai Python (untuk highlight sintaks dan integrasi alat bantu lain), tambahkan konfigurasi berikut ke `settings.json`.
 
-Cara Membuka settings.json (User Settings):
-Buka VS Code.
+Cara Membuka `settings.json` (User Settings):
 
-Klik menu File → Preferences → Settings (atau tekan Ctrl + ,).
-
-Di pojok kanan atas panel Settings, klik ikon `{}` (Open Settings (JSON)).
-
-Tambahkan kode berikut ke dalam JSON:
+* Buka VS Code.
+* Klik menu **File → Preferences → Settings** (atau tekan `Ctrl + ,`).
+* Di pojok kanan atas panel Settings, klik ikon `{}` (Open Settings (JSON)).
+* Tambahkan kode berikut ke dalam JSON:
 
 ```json
 "files.associations": {
@@ -64,9 +62,22 @@ Tambahkan kode berikut ke dalam JSON:
 }
 ```
 
-Jika sudah ada bagian `files.associations`, kamu cukup menambahkan baris `"*.xr": "python"` di dalamnya.
+> Jika sudah ada bagian `files.associations`, kamu cukup menambahkan baris `"*.xr": "python"` di dalamnya.
 
-### b. Task untuk Menjalankan File
+### b. Menonaktifkan Ekstensi Python (Direkomendasikan)
+
+Untuk menghindari peringatan error dari linter Python (seperti `fn` yang bukan keyword Python), **disarankan untuk menonaktifkan ekstensi Python** sepenuhnya pada proyek `.xr`.
+
+#### Langkah-langkah:
+
+1. Buka **Command Palette** (`Ctrl+Shift+P`).
+2. Ketik dan pilih: `Extensions: Disable (Workspace)`
+3. Cari **Python** lalu pilih untuk menonaktifkan.
+4. VS Code akan menawarkan untuk **menonaktifkan ekstensi lain yang terhubung dengan Python** (seperti Jupyter, Pylance, dll) — **pilih "Yes" atau "Disable All"** agar tidak ada linter aktif yang mengganggu.
+
+> Jangan khawatir, ini hanya berlaku untuk proyek ini saja (workspace). Ekstensi Python tetap aktif untuk proyek lain.
+
+### c. Task untuk Menjalankan File
 
 Buat file `tasks.json` di dalam folder `.vscode/` dengan isi seperti berikut:
 
@@ -91,9 +102,13 @@ Buat file `tasks.json` di dalam folder `.vscode/` dengan isi seperti berikut:
 }
 ```
 
-* Pastikan path pada `command` sesuai dengan lokasi `nginr` di sistem Anda. Gunakan `${HOME}` agar lebih portabel.
+* Pastikan path pada `command` sesuai dengan lokasi `nginr` di sistem Anda.
+* Gunakan `${HOME}` agar lebih portabel.
 * Simpan file ini sebagai `.vscode/tasks.json` di root proyek.
 
-### c. Catatan untuk Pengguna Ekstensi ErrorLens
+### d. Catatan untuk Pengguna Ekstensi ErrorLens
 
-Jika Anda menggunakan ekstensi `ErrorLens`, pastikan interpreter Python **tidak disetel ke versi apa pun**. Hal ini mencegah `ErrorLens` memberikan peringatan terus-menerus pada baris yang menggunakan deklarasi seperti `fn`, karena proyek ini tidak menggunakan interpreter Python secara langsung, melainkan preprocessor `nginr`.
+Jika Anda menggunakan ekstensi **ErrorLens**, perhatikan bahwa **ErrorLens akan tetap memunculkan peringatan jika ada linter aktif** seperti Python/Pylance. Maka dari itu:
+
+* **Matikan ekstensi Python seperti dijelaskan di atas**.
+* Alternatif lain: **nonaktifkan ErrorLens sementara** jika masih mengganggu.
