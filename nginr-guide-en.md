@@ -49,13 +49,12 @@ myproject/
 
 To make `.xr` files recognized as Python (for syntax highlighting and integration with other tools), add the following configuration to your `settings.json`.
 
-**How to Open `settings.json` (User Settings):**
+**How to open `settings.json` (User Settings):**
 
-* Open VS Code.
-* Go to **File → Preferences → Settings** (or press `Ctrl + ,`).
-* Click the `{}` icon at the top right corner to open the JSON view.
-
-Then add this to your JSON:
+1. Open VS Code.
+2. Go to **File → Preferences → Settings** (or press `Ctrl + ,`).
+3. In the top right corner of the Settings panel, click the `{}` icon (Open Settings (JSON)).
+4. Add the following to the JSON:
 
 ```json
 "files.associations": {
@@ -63,23 +62,43 @@ Then add this to your JSON:
 }
 ```
 
-> If you already have a `files.associations` section, simply add `"*.xr": "python"` inside it.
+> If the `files.associations` section already exists, just add `"*.xr": "python"` inside it.
+
+---
 
 ### b. Disabling the Python Extension (Recommended)
 
-To avoid constant linting errors from the Python extension (e.g., marking `fn` as an invalid function declaration), it’s **recommended to disable the Python extension** for this workspace.
+To avoid syntax errors or warnings from the Python linter (e.g., `fn` being flagged because it's not a standard Python keyword), it’s **recommended to disable the Python extension for this project only**.
 
-#### Steps:
+#### How to disable the Python extension for a single workspace/project:
 
-1. Open the **Command Palette** (`Ctrl+Shift+P`).
-2. Search for and select: `Extensions: Disable (Workspace)`
-3. Find **Python**, then choose to disable it.
-4. VS Code may prompt you to **also disable related extensions** (like Jupyter, Pylance, etc.).
-   → **Choose "Yes" or "Disable All"** to avoid interference.
+1. Open the **Extensions sidebar** (click the box icon or press `Ctrl+Shift+X`).
 
-> This only disables Python extensions for the current project. They remain active for other workspaces.
+2. Search for **Python** in the search bar.
 
-### c. Running Files with a Task
+3. Find the **Python** extension (usually by Microsoft).
+
+4. Click the **⚙️ gear icon** next to the extension, then choose:
+
+   > **"Disable (Workspace)"**
+
+5. If prompted with something like:
+
+   > *"This extension depends on other extensions. Do you want to disable them too?"*
+
+   Select **"Yes" or "Disable All"**.
+
+💡 This will automatically disable additional extensions such as:
+
+* **Pylance**
+* **Jupyter**
+* **Python Debugger**, etc.
+
+> This only affects this project folder. The Python extension will remain active in other projects.
+
+---
+
+### c. Task to Run Files
 
 Create a `tasks.json` file inside the `.vscode/` folder with the following content:
 
@@ -90,7 +109,7 @@ Create a `tasks.json` file inside the `.vscode/` folder with the following conte
     {
       "label": "nginr",
       "type": "shell",
-      "command": "${HOME}/PATH/TO/nginr", // Replace PATH/TO with your actual nginr path
+      "command": "${HOME}/PATH/TO/nginr", // Replace PATH/TO with your actual nginr location
       "args": [
         "${file}"
       ],
@@ -104,13 +123,15 @@ Create a `tasks.json` file inside the `.vscode/` folder with the following conte
 }
 ```
 
-* Make sure the path in `command` matches your system's location for `nginr`.
-* Use `${HOME}` for portability.
-* Save this as `.vscode/tasks.json` in the project root.
+* Make sure the `command` path points to the correct location of `nginr` on your system.
+* Use `${HOME}` for better portability.
+* Save this file as `.vscode/tasks.json` at the root of your project.
 
-### d. Note for ErrorLens Users
+---
 
-If you use the **ErrorLens** extension, be aware that it will still highlight errors reported by linters such as Python or Pylance. Therefore:
+### d. Note for ErrorLens Extension Users
 
-* **Disable the Python extension as shown above** to prevent false errors.
-* Alternatively, you can **temporarily disable ErrorLens** if it becomes too noisy.
+If you're using the **ErrorLens** extension, keep in mind that it only displays messages from other extensions (such as Python or Pylance). Therefore:
+
+* **It’s recommended to disable the Python extension** as described above to prevent persistent error messages.
+* If ErrorLens is still too distracting, you can **temporarily disable it** via the gear icon in the Extensions sidebar.
