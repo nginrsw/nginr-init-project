@@ -94,7 +94,7 @@ Ini akan otomatis menonaktifkan ekstensi tambahan seperti:
 * **Jupyter**
 * **Python Debugger**, dll.
 
-> Ini hanya berlaku untuk folder proyek ini saja. Di proyek lain, ekstensi Python tetap aktif seperti biasa.
+> Ketika kita hendak menggunakan python kembali, harap nyalakan kembali ekstensi yg dimatikan untuk menggunakan kembali linting dan fungsi lainnya yg disediakan ekstensi python dan ekstensi lainnya yg terkait.
 
 ---
 
