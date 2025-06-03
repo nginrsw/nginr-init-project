@@ -94,7 +94,7 @@ To avoid syntax errors or warnings from the Python linter (e.g., `fn` being flag
 * **Jupyter**
 * **Python Debugger**, etc.
 
-> This only affects this project folder. The Python extension will remain active in other projects.
+> When you want to use Python again, please remember to re-enable the extensions that were disabled in order to restore linting and other functionalities provided by the Python extension and any related extensions.
 
 ---
 
