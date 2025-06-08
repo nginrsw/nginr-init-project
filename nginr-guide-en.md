@@ -4,33 +4,49 @@ This guide explains the steps to create a basic project structure.
 
 ## 1. Directory Structure
 
-```
-myproject/
+```project_name/
+├── README.md
 ├── requirements.txt
+├── nginr_config.yaml
 ├── docs/
-│   └── *.md
+│   ├── architecture.md
+│   ├── api.md
+│   └── dev-notes.md
 ├── src/
-│   ├── __init__.py
+│   ├── __init__.py  # Main source code (nginr file)
 │   └── main.xr
-└── tests/
-    └── test_*.xr
+├── tests/
+│   └── test_main.xr # Tests for main.xr
+└── .gitignore
 ```
 
-* **requirements.txt**: A list of dependencies required by the project.
-* **docs/**: Folder for project documentation (in Markdown format).
-* **src/**: Folder containing the main source code.
+* **requirements.txt**: A text file listing the Python dependencies needed for the project. It helps to easily install all required packages using tools like `pip`.
 
-  * `__init__.py`: Marks the folder as a Python package.
-  * `main.xr`: The main file that contains the core logic of the program.
-* **tests/**: Folder for test files.
+* **docs/**: A directory containing additional project documentation written in Markdown (`.md`) files, such as:
+
+  * `architecture.md`: Describes the overall architecture of the project.
+  * `api.md`: Contains API documentation, if applicable.
+  * `dev-notes.md`: Developer notes and important information for contributors.
+
+* **src/**: The folder containing the main source code files with `.xr` extension, written in the `nginr` syntax.
+
+  * `main.xr`: The primary source code file which contains the core logic of the application.
+
+  > **Note:** This folder does not include `__init__.py` because it is not a Python package but rather a folder for scripts using a custom syntax.
+
+* **tests/**: A directory for test files that verify the correctness of the source code in `src/`.
+
+  * `test_main.xr`: A test script designed to test the functionality in `main.xr`.
 
 ## 2. Creating a New Project
 
-1. **Create the folder structure** as shown above.
-2. **Create a `requirements.txt` file** to list any dependencies (e.g., `math`, `time`, `random`, `os`, `sys`, or anything else your project needs).
-3. **Create a `main.xr` file** inside the `src/` folder as the program’s entry point.
-4. **Create test files** inside the `tests/` folder (e.g., `test_*.xr`).
-5. **Run the project** using a suitable command or task (e.g., the `nginr` task).
+Nginr can also help you quickly set up a new project structure. Use the init command:
+
+```
+nginr init your_project_name
+```
+
+And you will get the project structure as shown above.
 
 ## 3. Running the Project
 
