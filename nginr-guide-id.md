@@ -112,6 +112,8 @@ Untuk menghindari error atau peringatan dari linter Python (misal `fn` dianggap 
 * **Python Debugger**, dan lainnya.
 
 > Jika ingin menggunakan Python lagi, jangan lupa untuk mengaktifkan kembali ekstensi yang dinonaktifkan agar linting dan fungsi lainnya dapat berjalan kembali.
+> 
+> Atau bisa menggunakan extensi vscode yg saya buat bernama [nginr-support](https://github.com/nginrsw/nginr-support), baca dan pahami baik-baik cara mengatur dan menggunakannya.
 
 ---
 
