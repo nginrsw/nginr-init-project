@@ -111,6 +111,8 @@ To avoid syntax errors or warnings from the Python linter (e.g., `fn` being flag
 * **Python Debugger**, etc.
 
 > When you want to use Python again, please remember to re-enable the extensions that were disabled in order to restore linting and other functionalities provided by the Python extension and any related extensions.
+> 
+> You can also use the VSCode extension I created called [nginr-support](https://github.com/nginrsw/nginr-support). Please read and understand carefully how to set it up and use it.
 
 ---
 
